@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:insert="fragments/header :: header">
+	
+	</head>
+	<body>
+		<header th:insert="fragments/menu :: menu-principal"></header>
+
+    <main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          
+        </div> <!-- /container -->
+      </div>
+      
+      <div th:if="${msg != null}" class='alert alert-success' th:text="${msg}" role='alert'></div>
+      <div class="container"> 
+        
+        <hr>         
+        
+      </div> <!-- /container -->
+
+    </main>
+	</body>
+</html>

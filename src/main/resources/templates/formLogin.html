@@ -1,24 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
+  <head th:insert="fragments/header :: header">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+
     <link rel="icon" href="favicon.ico">
 
     <title>DracMagic App | Ingresar al Sistema</title>
-    <!-- Bootstrap core CSS -->
-    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
-    <link th:href="@{/bootstrap/css/sticky-footer-navbar.css}" rel="stylesheet">
 
   </head>
 
   <body>
-
-    <header th:insert="fragments/menu :: menu-principal"></header>
 
     <main role="main">     
       <hr>
@@ -46,7 +38,10 @@
                   <input type="password" name="password" id="password" class="form-control" placeholder="Password" required><br>
                   <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
                    <p class="text-primary" style="font-size: small">¿Todavía no estas registrado? <a th:href="@{/signup}">Regístrate</a></p>                  
-                 
+                  
+                  <!--
+   
+                  -->
                 </div>
                 <div class="col-md-4"> 
                 </div>

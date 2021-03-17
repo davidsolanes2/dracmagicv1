@@ -23,7 +23,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     
     private String username;
 
@@ -52,16 +52,16 @@ public class User {
                     name = "role_id", referencedColumnName = "id")
     )
     private List<Role> roles;
-
-	public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
     
-    public String getUsername() {
+    public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getUsername() {
 		return username;
 	}
 
@@ -134,7 +134,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + "username=" + username + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+		return "User [id=" + id + ", username=" + username + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", password=" + password + ", estatus=" + estatus + ", fechaRegistro=" + fechaRegistro + ", roles="
 				+ roles + "]";
 	}

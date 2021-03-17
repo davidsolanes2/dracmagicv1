@@ -3,10 +3,14 @@ package com.app.dracmagicv1.security;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
@@ -26,4 +30,33 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 					"where u.email = ?");
 		
 	}
+	
+	/**
+	 * Personalizamos el Acceso a las URLs de la aplicación
+	 */
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+        .antMatchers(
+        			"/css/**",
+        			"/images/**",
+        			"/js/**").permitAll()
+        .antMatchers(
+        			"/",
+        			"/login",
+        			"/signup").permitAll()
+        .and().formLogin().loginPage("/login").permitAll()
+        .and().logout().permitAll();
+        
+	}
+	
+	/**
+	 *  Implementación de Spring Security que encripta passwords con el algoritmo Bcrypt
+	 * @return
+	 */
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+	    return new BCryptPasswordEncoder();
+	}
+	
 }
